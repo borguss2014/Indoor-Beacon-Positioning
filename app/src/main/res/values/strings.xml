@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Beacon</string>
+    <string name="app_name2">Scan Settings</string>
+
+    <string name="action_scan">Scan</string>
+    <string name="action_test">Settings</string>
+
+</resources>
