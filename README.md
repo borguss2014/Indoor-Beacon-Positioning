@@ -2,7 +2,6 @@
 
 Android application which uses Nordic Semiconductor beacons (nRF51822) to track a user's position indoors.
 
-----------------------------------------------------
 # Deployment
 
 This application requires a CouchDB database to store its maps in SVG format . The map must be created with a modified version of Method-Draw . 
@@ -10,7 +9,6 @@ This application requires a CouchDB database to store its maps in SVG format . T
 Further information about this map editor can be found at : https://github.com/borguss2014/SVG-Editor
 
 
-----------------------------------------------------
 # Copyright 
 
 Copyright(C) 2016 under Apache version 2.0
