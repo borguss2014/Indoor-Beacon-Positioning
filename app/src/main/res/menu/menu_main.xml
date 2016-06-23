@@ -3,12 +3,19 @@
     <item
         android:id="@+id/action_scan"
         android:title="@string/action_scan"
-        android:orderInCategory="30"
+        android:orderInCategory="10"
         android:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_test"
-        android:title="@string/action_test"
+        android:id="@+id/delete_database"
+        android:title="@string/delete_database"
+        android:orderInCategory="20"
+        android:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_list"
+        android:title="@string/action_list"
         android:orderInCategory="70"
         android:showAsAction="never" />
+
 </menu>

@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">Beacon</string>
-    <string name="app_name2">Scan Settings</string>
+    <string name="app_name2">Log Beacons</string>
+    <string name="app_name3">Beacons List</string>
 
     <string name="action_scan">Scan</string>
-    <string name="action_test">Settings</string>
+    <string name="action_list">List</string>
+    <string name="action_test">Log Beacons</string>
 
+    <string name="delete_database">Delete Database</string>
+
+    <string name="action_scan_beacons">Scan</string>
 </resources>
