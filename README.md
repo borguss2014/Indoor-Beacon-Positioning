@@ -13,17 +13,17 @@ This application requires a CouchDB database to store its maps in SVG format . T
 
 A CouchDB filter is also required so that the application can find the maps based on the beacons detected in the area. This filter was used , stored as a CouchDB document under the name "_design/replicator" in the same database where the maps are stored :
 
-function(doc, req) {
-    if (typeof doc.beacons !== 'undefined') {
-        for (var prop in doc.beacons) {
-            if (typeof doc.beacons[prop] !== 'undefined' && doc.beacons[prop].UUID == req.query.beaconUUID) {
-                return true;
+
+    function(doc, req) {
+        if (typeof doc.beacons !== 'undefined') {
+            for (var prop in doc.beacons) {
+                if (typeof doc.beacons[prop] !== 'undefined' && doc.beacons[prop].UUID == req.query.beaconUUID) {
+                    return true;
+                }
             }
         }
-
+        return false;
     }
-    return false;
-}
 
 Further information about this map editor can be found at : https://github.com/borguss2014/SVG-Editor
 
