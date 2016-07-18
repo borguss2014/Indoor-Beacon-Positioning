@@ -24,6 +24,8 @@ A CouchDB filter is also required so that the application can find the maps base
         }
         return false;
     }
+    
+The name of the database used by this application and the map editor is "testing". If a different database name is required , it must be changed in both . Also, the IP of the CouchDB database must be provided/changed so it can properly replicate the maps.  
 
 Further information about this map editor can be found at : https://github.com/borguss2014/SVG-Editor
 
