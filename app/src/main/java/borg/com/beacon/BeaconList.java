@@ -52,6 +52,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Borg on 5/4/2016.
@@ -475,16 +476,32 @@ public class BeaconList extends Activity{
                 }
 
                 //dist = Math.exp((Double.parseDouble(phoneRSSI) - getReferenceRSSI(Integer.parseInt(beaconRSSI))) / (-20));
-                kGain = errorEstimate / (errorEstimate + errorMeasurement);
-                valueEstimate = valueEstimate + kGain*(Double.valueOf(phoneRSSI) - valueEstimate);
-                errorEstimate = (1 - kGain) * errorEstimate;
+//                kGain = errorEstimate / (errorEstimate + errorMeasurement);
+//                valueEstimate = valueEstimate + kGain*(Double.valueOf(phoneRSSI) - valueEstimate);
+//                errorEstimate = (1 - kGain) * errorEstimate;
 
-//                if(firstScan){
-//                    armaMeasurement = Double.valueOf(phoneRSSI);
-//                    firstScan = false;
-//                }
+                Map<String, Double> power_levels = new HashMap<>();
+                if(firstScan){
 
-                //valueEstimate = armaFilter(0.1, Double.parseDouble(phoneRSSI));
+                    power_levels.put("4", 0.0);
+                    power_levels.put("0", 0.0);
+                    power_levels.put("-4", 0.0);
+                    power_levels.put("-8", 0.0);
+                    power_levels.put("-12", 0.0);
+                    power_levels.put("-16", 0.0);
+                    power_levels.put("-20", 0.0);
+
+
+                    //armaMeasurement = Double.valueOf(phoneRSSI);
+                    power_levels.remove(beaconRSSI);
+                    power_levels.put(beaconRSSI, Double.valueOf(phoneRSSI));
+                    firstScan = false;
+                }
+
+
+                double armaPowerLevel = power_levels.get(beaconRSSI);
+
+                valueEstimate = armaFilter(0.1, Double.parseDouble(phoneRSSI));
 
                 filteredRSSIValues.add(valueEstimate);
                 rawRSSIValues.add(Double.valueOf(phoneRSSI));

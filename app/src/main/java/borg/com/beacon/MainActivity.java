@@ -906,7 +906,6 @@ public class MainActivity extends Activity {
     private ScanCallback beaconScanCallback = new ScanCallback() {
 
 
-
         @Override
         public void onScanResult(int callbackType, ScanResult result) {
 
@@ -935,13 +934,15 @@ public class MainActivity extends Activity {
                 beaconRSSI = Byte.toString(result.getScanRecord().getManufacturerSpecificData().valueAt(0)[22]);
 
 
-                if(powerLevelsFound.get(uuid).get(beaconRSSI) == 0){
-                    Log.d("DEBUG", "Scanning power level " + beaconRSSI + " for the first time, incrementing by one");
-                    //First time scanned this power level
-                    powerLevelsFound.get(uuid).remove(beaconRSSI);
-                    powerLevelsFound.get(uuid).put(beaconRSSI, 1);
+//                if(powerLevelsFound.get(uuid).get(beaconRSSI) == 0){
+//                    Log.d("DEBUG", "Scanning power level " + beaconRSSI + " for the first time, incrementing by one");
+//                    //First time scanned this power level
+//                    powerLevelsFound.get(uuid).remove(beaconRSSI);
+//                    powerLevelsFound.get(uuid).put(beaconRSSI, 1);
                     nrOfLevelsScanned++;
-                }
+//                }
+
+
 
                 Log.d("DEBUG", "Power levels scanned for the first time: " + nrOfLevelsScanned);
                 //Keep adding fresh filtered data until the set is finished
@@ -980,17 +981,19 @@ public class MainActivity extends Activity {
                     //Create a map with minimum and maximum distance for each beacon
                     for(int i=0; i < uuidKeysArray.length; i++){
 
-                        //Get the RSSI for every power level , calculate distance and add it in an array .
+                        //Get the RSSI for every power level , calculate distance and add it in an array
                         // After that , extract the minimum and maximum distance from the array and
                         //add it to the map    min_max_distances
                         for (Map.Entry<String, Double> powerLevelWithFilteredValue : armaMeasurements.get(uuidKeysArray[i]).entrySet()) {
+
                             double filteredRSSIForPowerLevel = powerLevelWithFilteredValue.getValue();
+                            if(filteredRSSIForPowerLevel != 0) {
+                                //Calculate distance
+                                distance = Math.pow(10, (filteredRSSIForPowerLevel - getReferenceRSSI(Integer.parseInt(beaconRSSI))) / (-10 * 2));
+                                distance = (distance * 960) / 10.4;
 
-                            //Calculate distance
-                            distance = Math.pow(10,(filteredRSSIForPowerLevel - getReferenceRSSI(Integer.parseInt(beaconRSSI))) / (-10 * 2.7));
-                            distance = (distance * 960) / 5.5;
-
-                            rssiValuesOnDifferentPowerLevels.add(distance);
+                                rssiValuesOnDifferentPowerLevels.add(distance);
+                            }
                         }
 
                         double minimumDistance = Collections.min(rssiValuesOnDifferentPowerLevels);
