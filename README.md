@@ -5,9 +5,14 @@
 Android application which uses Nordic Semiconductor beacons (nRF51822) to track a user's position indoors.
 
 This app will scan for beacons in the area when its first opened , after which the user can trigger location detection .
-User position , beacons and other elements in the map are displayed in a WebView and manipulated with Snap.svg : https://github.com/adobe-webplatform/Snap.svg
+The minimum and maximum distance to each beacon is displayed with a green circle , and respectively a blue circle . 
+User position , beacons and other elements in the map are displayed in a WebView and manipulated with Snap.svg: 
 
-Trilateration is done using : https://github.com/lemmingapex/Trilateration
+    https://github.com/adobe-webplatform/Snap.svg
+
+Trilateration is done using :
+
+    https://github.com/lemmingapex/Trilateration
 
 # Usage
 
