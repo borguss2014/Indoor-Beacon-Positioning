@@ -1,5 +1,7 @@
 # Indoor-Beacon-Positioning (Work-In-Progress)
 
+![Alt text](/6.jpg?raw=true "Indoor Location Detection")
+
 Android application which uses Nordic Semiconductor beacons (nRF51822) to track a user's position indoors.
 
 This app will scan for beacons in the area when its first opened , after which the user can trigger location detection .
