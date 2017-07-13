@@ -1,4 +1,6 @@
-# Indoor-Beacon-Positioning (Work-In-Progress)
+# Indoor-Beacon-Positioning
+
+(This project is put on hold for now due to lack of hardware / beacons and will remain this way until I get the required hardware)
 
 ![Alt text](/6.jpg?raw=true "Indoor Location Detection")
 
